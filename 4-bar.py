@@ -32,19 +32,20 @@ def posFunc(t_3, t_4):
 
 def updateValues(thetas):
     f = posFunc(thetas[0][0], thetas[1][0])
-    print(f"Position Functions: {f}")
+    print(f"Position Functions:\nf_theta3: {f[0]}\nf_theta4: {f[1]}")
     J = createJacobian(thetas[0][0], thetas[1][0])
-    print(f"Jacobian: {f}")
+    print(f"Jacobian:\n{J}")
     newF = thetas + np.linalg.inv(J) * (-f)
     return newF
 
 
 if __name__ == '__main__':
+    
     for i in range(3):
         print(f"Iteration {i}\n")
         old = theta3_4
         theta3_4 = updateValues(theta3_4)
-        print(f" Theta 3_4: {(theta3_4 * 360)/ (2 * pi)}")
+        print(f" Theta_3_4:\n{(theta3_4 * 180)/ pi}")
         print("")
         if abs(old[0][0]-theta3_4[0][0]) < 0.00001:
             break
